@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>EPIC LIST COMPARATOR</title>
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="bower_components/bootstrap/dist/css/bootstrap.css">
+<link rel="stylesheet"
+	href="bower_components/html5-boilerplate/dist/css/normalize.css">
+<link rel="stylesheet"
+	href="bower_components/html5-boilerplate/dist/css/main.css">
+<link rel="stylesheet" href="app.css">
+<script
+	src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
+</head>
+<body ng-app="epicApp">
+
+	<div class="col-xs-12" ng-controller="EpicController">
+		<div class="row">
+		<hr>
+			<div class="col-xs-6">
+				<div class="panel panel-default">
+					<div class="panel-heading">LIST 1</div>
+					<div class="panel-body">
+						<select
+								class="form-control"
+								name="list1Items"
+								ng-model="list1Items"
+								style="height: 100%; overflow: scroll;"
+								multiple
+								ng-disabled="true"
+								required>
+								<option ng-repeat="item in list1" value="{{item}}">{{item}}</option>
+							</select>
+					</div>
+					<div class="panel-footer">
+						<input type="text" id="newList1" data-ng-model="newList1"
+							maxlength="50" />
+						<button type="button" class="btn-primary btn"
+							ng-click="addToList1()" ng-disabled="newList1.length == 0">Add
+							Item</button>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-xs-6">
+				<div class="panel panel-default">
+					<div class="panel-heading">LIST2</div>
+					<div class="panel-body">
+						<select
+								class="form-control"
+								name="list2Items"
+								ng-model="list2Items"
+								style="height: 100%; overflow: scroll;"
+								multiple
+								ng-disabled="true"
+								required>
+								<option ng-repeat="item in list2" value="{{item}}">{{item}}</option>
+							</select>
+					</div>
+					<div class="panel-footer">
+						<input type="text" id="newList2" data-ng-model="newList2"
+							maxlength="50" />
+						<button type="button" class="btn-primary btn"
+							ng-click="addToList2()" ng-disabled="newList2.length == 0">Add
+							Item</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<hr>
+
+		<div class="row">
+
+
+				<div class="col-xs-12">
+				<button type="button" class="btn-primary btn"
+					ng-click="processList()"
+					ng-disabled="list1.length == 0 && list2.length == 0">Process Lists</button>
+				</div>					
+
+	
+				<div class="col-xs-6">
+					<div class="panel panel-default">
+						<div class="panel-heading">Shared Items</div>
+						<div class="panel-body">
+						<select
+								class="form-control"
+								name="list2Items"
+								ng-model="sharedItemsResult"
+								style="height: 100%; overflow: scroll;"
+								multiple
+								ng-disabled="true"
+								required>
+								<option ng-repeat="item in shareItems" value="{{item}}">{{item}}</option>
+							</select>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-xs-6">
+					<div class="panel panel-default">
+						<div class="panel-heading">Items in List 2 but not in List 1</div>
+						<div class="panel-body">
+							<select
+								class="form-control"
+								name="list2Items"
+								ng-model="notInList1Result"
+								style="height: 100%; overflow: scroll;"
+								multiple
+								ng-disabled="true"
+								required>
+								<option ng-repeat="item in notInList1" value="{{item}}">{{item}}</option>
+							</select>
+						</div>
+					</div>
+				</div>
+		</div>
+	</div>
+
+	<script src="bower_components/angular/angular.js"></script>
+	<script src="bower_components/angular-route/angular-route.js"></script>
+	<script src="controllers/epicController.js"></script>
+	<script src="components/version/version.js"></script>
+	<script src="components/version/version-directive.js"></script>
+	<script src="components/version/interpolate-filter.js"></script>
+	<script src="bower_components/jquery/dist/jquery.js"></script>
+	<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+</body>
+</html>
